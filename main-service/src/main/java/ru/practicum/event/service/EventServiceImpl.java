@@ -75,7 +75,7 @@ public class EventServiceImpl implements EventService {
 
         if (newEventDto.getEventDate().isBefore(LocalDateTime.now().plusHours(2))) {
 
-            throw new ConflictException(
+            throw new BadRequestException(
                     "Дата события должна быть не раньше чем через два часа");
         }
 
@@ -142,7 +142,7 @@ public class EventServiceImpl implements EventService {
         if (updateEventRequest.getEventDate() != null
                 && updateEventRequest.getEventDate().isBefore(LocalDateTime.now().plusHours(2))) {
 
-            throw new ConflictException(
+            throw new BadRequestException(
                     "Дата события должна быть не раньше чем через два часа");
         }
 
@@ -220,7 +220,7 @@ public class EventServiceImpl implements EventService {
                 && updateEventRequest.getEventDate()
                 .isBefore(LocalDateTime.now().plusHours(1))) {
 
-            throw new ConflictException(
+            throw new BadRequestException(
                     "Дата события должна быть не раньше чем через час");
         }
 
