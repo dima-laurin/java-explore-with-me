@@ -2,6 +2,10 @@ package ru.practicum.compilation.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import ru.practicum.compilation.dto.CompilationDto;
 import ru.practicum.compilation.dto.NewCompilationDto;
 import ru.practicum.compilation.dto.UpdateCompilationRequest;
@@ -117,16 +121,23 @@ public class CompilationServiceImpl implements CompilationService {
     @Override
     public List<CompilationDto> getCompilations(Boolean pinned, int from, int size) {
 
-        boolean filterPinned = pinned != null;
+        Sort sortById = Sort.by(Sort.Direction.ASC, "id");
 
-        boolean pinnedForQuery =
-                filterPinned
-                        ? pinned
-                        : false;
+        Pageable page = PageRequest.of(0, from + size, sortById);
 
-        List<Compilation> compilations = compilationRepository.getCompilations(filterPinned, pinnedForQuery, size, from);
+        Page<Compilation> compilationPage;
+
+        if (pinned == null) {
+            compilationPage = compilationRepository.findAll(page);
+        } else {
+            compilationPage = compilationRepository.findByPinned(pinned, page);
+        }
+
+        List<Compilation> compilations = compilationPage.getContent();
 
         return compilations.stream()
+                .skip(from)
+                .limit(size)
                 .map(compilation ->
                         CompilationMapper.toCompilationDto(
                                 compilation,

@@ -132,4 +132,18 @@ public class GlobalExceptionHandler {
                 LocalDateTime.now()
         );
     }
+
+    @ExceptionHandler(EventDateValidationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ApiError handleInvalidDateRangeException(
+            EventDateValidationException exception) {
+
+        return new ApiError(
+                List.of(),
+                exception.getMessage(),
+                "Запрос составлен некорректно.",
+                HttpStatus.BAD_REQUEST,
+                LocalDateTime.now()
+        );
+    }
 }

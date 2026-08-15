@@ -2,6 +2,7 @@ package ru.practicum.event.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import ru.practicum.event.model.Event;
 import ru.practicum.event.model.EventState;
 
@@ -28,53 +29,55 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     boolean existsByCategoryId(Long categoryId);
 
     @Query(value = """
-            SELECT *
-            FROM events
-            WHERE (?1 = FALSE OR initiator_id IN (?2))
-              AND (?3 = FALSE OR state IN (?4))
-              AND (?5 = FALSE OR category_id IN (?6))
-              AND (?7 = FALSE OR event_date >= ?8)
-              AND (?9 = FALSE OR event_date <= ?10)
-            ORDER BY id
-            LIMIT ?11 OFFSET ?12
-            """, nativeQuery = true)
+        SELECT *
+        FROM events
+        WHERE (:filterUsers = FALSE OR initiator_id IN (:users))
+          AND (:filterStates = FALSE OR state IN (:states))
+          AND (:filterCategories = FALSE OR category_id IN (:categories))
+          AND (:filterRangeStart = FALSE OR event_date >= :rangeStart)
+          AND (:filterRangeEnd = FALSE OR event_date <= :rangeEnd)
+        ORDER BY id
+        LIMIT :size OFFSET :from
+        """, nativeQuery = true)
     List<Event> getAdminEvents(
-            boolean filterUsers,
-            Collection<Long> users,
-            boolean filterStates,
-            Collection<String> states,
-            boolean filterCategories,
-            Collection<Long> categories,
-            boolean filterRangeStart,
-            LocalDateTime rangeStart,
-            boolean filterRangeEnd,
-            LocalDateTime rangeEnd,
-            int size,
-            int from
+            @Param("filterUsers") boolean filterUsers,
+            @Param("users") Collection<Long> users,
+            @Param("filterStates") boolean filterStates,
+            @Param("states") Collection<String> states,
+            @Param("filterCategories") boolean filterCategories,
+            @Param("categories") Collection<Long> categories,
+            @Param("filterRangeStart") boolean filterRangeStart,
+            @Param("rangeStart") LocalDateTime rangeStart,
+            @Param("filterRangeEnd") boolean filterRangeEnd,
+            @Param("rangeEnd") LocalDateTime rangeEnd,
+            @Param("size") int size,
+            @Param("from") int from
     );
 
     @Query(value = """
         SELECT *
         FROM events
         WHERE state = 'PUBLISHED'
-          AND (?1 = FALSE
-               OR LOWER(annotation) LIKE LOWER(CONCAT('%', ?2, '%'))
-               OR LOWER(description) LIKE LOWER(CONCAT('%', ?2, '%')))
-          AND (?3 = FALSE OR category_id IN (?4))
-          AND (?5 = FALSE OR paid = ?6)
-          AND (?7 = FALSE OR event_date >= ?8)
-          AND (?9 = FALSE OR event_date <= ?10)
+          AND (
+                :filterText = FALSE
+                OR LOWER(annotation) LIKE LOWER(CONCAT('%', :text, '%'))
+                OR LOWER(description) LIKE LOWER(CONCAT('%', :text, '%'))
+              )
+          AND (:filterCategories = FALSE OR category_id IN (:categories))
+          AND (:filterPaid = FALSE OR paid = :paid)
+          AND (:filterRangeStart = FALSE OR event_date >= :rangeStart)
+          AND (:filterRangeEnd = FALSE OR event_date <= :rangeEnd)
         """, nativeQuery = true)
     List<Event> getPublicEvents(
-            boolean filterText,
-            String text,
-            boolean filterCategories,
-            Collection<Long> categories,
-            boolean filterPaid,
-            boolean paid,
-            boolean filterRangeStart,
-            LocalDateTime rangeStart,
-            boolean filterRangeEnd,
-            LocalDateTime rangeEnd
+            @Param("filterText") boolean filterText,
+            @Param("text") String text,
+            @Param("filterCategories") boolean filterCategories,
+            @Param("categories") Collection<Long> categories,
+            @Param("filterPaid") boolean filterPaid,
+            @Param("paid") boolean paid,
+            @Param("filterRangeStart") boolean filterRangeStart,
+            @Param("rangeStart") LocalDateTime rangeStart,
+            @Param("filterRangeEnd") boolean filterRangeEnd,
+            @Param("rangeEnd") LocalDateTime rangeEnd
     );
 }

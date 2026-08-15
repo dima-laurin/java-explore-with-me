@@ -18,7 +18,7 @@ import ru.practicum.event.model.UserStateAction;
 import ru.practicum.event.repository.EventRepository;
 import ru.practicum.exception.ConflictException;
 import ru.practicum.exception.NotFoundException;
-import ru.practicum.exception.BadRequestException;
+import ru.practicum.exception.EventDateValidationException;
 import ru.practicum.request.model.RequestStatus;
 import ru.practicum.request.repository.RequestRepository;
 import ru.practicum.stats.client.StatsClient;
@@ -75,7 +75,7 @@ public class EventServiceImpl implements EventService {
 
         if (newEventDto.getEventDate().isBefore(LocalDateTime.now().plusHours(2))) {
 
-            throw new BadRequestException(
+            throw new EventDateValidationException(
                     "Дата события должна быть не раньше чем через два часа");
         }
 
@@ -142,7 +142,7 @@ public class EventServiceImpl implements EventService {
         if (updateEventRequest.getEventDate() != null
                 && updateEventRequest.getEventDate().isBefore(LocalDateTime.now().plusHours(2))) {
 
-            throw new BadRequestException(
+            throw new EventDateValidationException(
                     "Дата события должна быть не раньше чем через два часа");
         }
 
@@ -220,7 +220,7 @@ public class EventServiceImpl implements EventService {
                 && updateEventRequest.getEventDate()
                 .isBefore(LocalDateTime.now().plusHours(1))) {
 
-            throw new BadRequestException(
+            throw new EventDateValidationException(
                     "Дата события должна быть не раньше чем через час");
         }
 
@@ -400,7 +400,7 @@ public class EventServiceImpl implements EventService {
 
         if (rangeStart != null && rangeEnd != null && rangeStart.isAfter(rangeEnd)) {
 
-            throw new BadRequestException(
+            throw new EventDateValidationException(
                     "Дата начала диапазона должна быть раньше даты окончания");
         }
 

@@ -2,6 +2,9 @@ package ru.practicum.user.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import ru.practicum.exception.NotFoundException;
 import ru.practicum.user.dto.NewUserRequest;
 import ru.practicum.user.dto.UserDto;
@@ -32,15 +35,22 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<UserDto> getUsers(Collection<Long> ids, int from, int size) {
+
+        Sort sortById = Sort.by(Sort.Direction.ASC, "id");
+
+        Pageable page = PageRequest.of(0, from + size, sortById);
+
         List<User> users;
 
         if (ids == null || ids.isEmpty()) {
-            users = userRepository.getUsers(size, from);
+            users = userRepository.findAllBy(page);
         } else {
-            users = userRepository.getUsers(ids, size, from);
+            users = userRepository.findByIdIn(ids, page);
         }
 
         return users.stream()
+                .skip(from)
+                .limit(size)
                 .map(UserMapper::toUserDto)
                 .toList();
     }

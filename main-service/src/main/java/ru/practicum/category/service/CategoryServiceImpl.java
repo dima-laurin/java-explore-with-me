@@ -11,6 +11,10 @@ import ru.practicum.exception.NotFoundException;
 import ru.practicum.event.repository.EventRepository;
 import ru.practicum.exception.ConflictException;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import java.util.List;
 
 @Service
@@ -78,8 +82,17 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<CategoryDto> getCategories(int from, int size) {
-        List<Category> categories = categoryRepository.getCategories(size, from);
 
-        return CategoryMapper.toCategoryDtoList(categories);
+        Sort sortById = Sort.by(Sort.Direction.ASC, "id");
+
+        Pageable page = PageRequest.of(0, from + size, sortById);
+
+        Page<Category> categoryPage = categoryRepository.findAll(page);
+
+        return categoryPage.getContent().stream()
+                .skip(from)
+                .limit(size)
+                .map(CategoryMapper::toCategoryDto)
+                .toList();
     }
 }
