@@ -3,6 +3,7 @@ package ru.practicum.event.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.data.domain.Pageable;
 import ru.practicum.event.model.Event;
 import ru.practicum.event.model.EventState;
 
@@ -13,14 +14,7 @@ import java.util.Optional;
 
 public interface EventRepository extends JpaRepository<Event, Long> {
 
-    @Query(value = """
-            SELECT *
-            FROM events
-            WHERE initiator_id = ?1
-            ORDER BY id
-            LIMIT ?2 OFFSET ?3
-            """, nativeQuery = true)
-    List<Event> getUserEvents(Long userId, int size, int from);
+    List<Event> findByInitiatorId(Long userId, Pageable pageable);
 
     Optional<Event> findByIdAndInitiatorId(Long eventId, Long userId);
 
@@ -37,7 +31,6 @@ public interface EventRepository extends JpaRepository<Event, Long> {
           AND (:filterRangeStart = FALSE OR event_date >= :rangeStart)
           AND (:filterRangeEnd = FALSE OR event_date <= :rangeEnd)
         ORDER BY id
-        LIMIT :size OFFSET :from
         """, nativeQuery = true)
     List<Event> getAdminEvents(
             @Param("filterUsers") boolean filterUsers,
@@ -50,8 +43,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
             @Param("rangeStart") LocalDateTime rangeStart,
             @Param("filterRangeEnd") boolean filterRangeEnd,
             @Param("rangeEnd") LocalDateTime rangeEnd,
-            @Param("size") int size,
-            @Param("from") int from
+            Pageable pageable
     );
 
     @Query(value = """
@@ -67,6 +59,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
           AND (:filterPaid = FALSE OR paid = :paid)
           AND (:filterRangeStart = FALSE OR event_date >= :rangeStart)
           AND (:filterRangeEnd = FALSE OR event_date <= :rangeEnd)
+        ORDER BY id
         """, nativeQuery = true)
     List<Event> getPublicEvents(
             @Param("filterText") boolean filterText,
@@ -78,6 +71,36 @@ public interface EventRepository extends JpaRepository<Event, Long> {
             @Param("filterRangeStart") boolean filterRangeStart,
             @Param("rangeStart") LocalDateTime rangeStart,
             @Param("filterRangeEnd") boolean filterRangeEnd,
-            @Param("rangeEnd") LocalDateTime rangeEnd
+            @Param("rangeEnd") LocalDateTime rangeEnd,
+            Pageable pageable
+    );
+
+    @Query(value = """
+        SELECT *
+        FROM events
+        WHERE state = 'PUBLISHED'
+          AND (
+                :filterText = FALSE
+                OR LOWER(annotation) LIKE LOWER(CONCAT('%', :text, '%'))
+                OR LOWER(description) LIKE LOWER(CONCAT('%', :text, '%'))
+              )
+          AND (:filterCategories = FALSE OR category_id IN (:categories))
+          AND (:filterPaid = FALSE OR paid = :paid)
+          AND (:filterRangeStart = FALSE OR event_date >= :rangeStart)
+          AND (:filterRangeEnd = FALSE OR event_date <= :rangeEnd)
+          ORDER BY event_date
+        """, nativeQuery = true)
+    List<Event> getPublicEventsOrderByEventDate(
+            @Param("filterText") boolean filterText,
+            @Param("text") String text,
+            @Param("filterCategories") boolean filterCategories,
+            @Param("categories") Collection<Long> categories,
+            @Param("filterPaid") boolean filterPaid,
+            @Param("paid") boolean paid,
+            @Param("filterRangeStart") boolean filterRangeStart,
+            @Param("rangeStart") LocalDateTime rangeStart,
+            @Param("filterRangeEnd") boolean filterRangeEnd,
+            @Param("rangeEnd") LocalDateTime rangeEnd,
+            Pageable pageable
     );
 }

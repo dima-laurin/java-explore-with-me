@@ -7,6 +7,7 @@ import ru.practicum.category.dto.NewCategoryDto;
 import ru.practicum.category.mapper.CategoryMapper;
 import ru.practicum.category.model.Category;
 import ru.practicum.category.repository.CategoryRepository;
+import ru.practicum.config.OffsetPageRequest;
 import ru.practicum.exception.NotFoundException;
 import ru.practicum.event.repository.EventRepository;
 import ru.practicum.exception.ConflictException;
@@ -85,13 +86,11 @@ public class CategoryServiceImpl implements CategoryService {
 
         Sort sortById = Sort.by(Sort.Direction.ASC, "id");
 
-        Pageable page = PageRequest.of(0, from + size, sortById);
+        Pageable page = new OffsetPageRequest(from, size, sortById);
 
         Page<Category> categoryPage = categoryRepository.findAll(page);
 
         return categoryPage.getContent().stream()
-                .skip(from)
-                .limit(size)
                 .map(CategoryMapper::toCategoryDto)
                 .toList();
     }

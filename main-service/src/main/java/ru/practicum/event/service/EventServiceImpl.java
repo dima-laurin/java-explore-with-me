@@ -1,9 +1,12 @@
 package ru.practicum.event.service;
 
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.practicum.category.model.Category;
 import ru.practicum.category.repository.CategoryRepository;
+import ru.practicum.config.OffsetPageRequest;
 import ru.practicum.event.dto.EventFullDto;
 import ru.practicum.event.dto.EventShortDto;
 import ru.practicum.event.dto.NewEventDto;
@@ -96,7 +99,11 @@ public class EventServiceImpl implements EventService {
                 .orElseThrow(() -> new NotFoundException(
                         "Пользователь с id=" + userId + " не найден"));
 
-        List<Event> events = eventRepository.getUserEvents(userId, size, from);
+        Sort sortById = Sort.by(Sort.Direction.ASC, "id");
+
+        Pageable page = new OffsetPageRequest(from, size, sortById);
+
+        List<Event> events = eventRepository.findByInitiatorId(userId, page);
 
         Map<String, Long> views = getViews(events);
 
@@ -352,6 +359,12 @@ public class EventServiceImpl implements EventService {
                         ? rangeEnd
                         : LocalDateTime.now();
 
+        Pageable page = new OffsetPageRequest(
+                from,
+                size,
+                Sort.unsorted()
+        );
+
         List<Event> events =
                 eventRepository.getAdminEvents(
                         filterUsers,
@@ -364,8 +377,7 @@ public class EventServiceImpl implements EventService {
                         rangeStartForQuery,
                         filterRangeEnd,
                         rangeEndForQuery,
-                        size,
-                        from
+                        page
                 );
 
         Map<String, Long> views = getViews(events);
@@ -444,19 +456,51 @@ public class EventServiceImpl implements EventService {
                         ? rangeEnd
                         : LocalDateTime.now();
 
-        List<Event> events =
-                eventRepository.getPublicEvents(
-                        filterText,
-                        textForQuery,
-                        filterCategories,
-                        categoriesForQuery,
-                        filterPaid,
-                        paidForQuery,
-                        filterRangeStart,
-                        rangeStartForQuery,
-                        filterRangeEnd,
-                        rangeEndForQuery
-                );
+        boolean requiresPostProcessing =
+                onlyAvailable || sort == EventSort.VIEWS;
+
+        Pageable pageable;
+
+        if (requiresPostProcessing) {
+            pageable = Pageable.unpaged();
+        } else {
+            pageable = new OffsetPageRequest(from, size, Sort.unsorted());
+        }
+
+        List<Event> events;
+
+        if (sort == EventSort.EVENT_DATE) {
+
+            events = eventRepository.getPublicEventsOrderByEventDate(
+                    filterText,
+                    textForQuery,
+                    filterCategories,
+                    categoriesForQuery,
+                    filterPaid,
+                    paidForQuery,
+                    filterRangeStart,
+                    rangeStartForQuery,
+                    filterRangeEnd,
+                    rangeEndForQuery,
+                    pageable
+            );
+
+        } else {
+
+            events = eventRepository.getPublicEvents(
+                    filterText,
+                    textForQuery,
+                    filterCategories,
+                    categoriesForQuery,
+                    filterPaid,
+                    paidForQuery,
+                    filterRangeStart,
+                    rangeStartForQuery,
+                    filterRangeEnd,
+                    rangeEndForQuery,
+                    pageable
+            );
+        }
 
         if (onlyAvailable) {
 
@@ -496,25 +540,19 @@ public class EventServiceImpl implements EventService {
                     .toList();
         }
 
-        if (sort == EventSort.EVENT_DATE) {
+        if (requiresPostProcessing) {
 
             events = events.stream()
-                    .sorted((first, second) ->
-                            first.getEventDate()
-                                    .compareTo(second.getEventDate())
-                    )
+                    .skip(from)
+                    .limit(size)
                     .toList();
         }
 
         return events.stream()
-                .skip(from)
-                .limit(size)
                 .map(event ->
                         EventMapper.toEventShortDto(
                                 event,
-                                getConfirmedRequests(
-                                        event.getId()
-                                ),
+                                getConfirmedRequests(event.getId()),
                                 views.getOrDefault(
                                         "/events/" + event.getId(),
                                         0L

@@ -2,9 +2,9 @@ package ru.practicum.user.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import ru.practicum.config.OffsetPageRequest;
 import ru.practicum.exception.NotFoundException;
 import ru.practicum.user.dto.NewUserRequest;
 import ru.practicum.user.dto.UserDto;
@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
 
         Sort sortById = Sort.by(Sort.Direction.ASC, "id");
 
-        Pageable page = PageRequest.of(0, from + size, sortById);
+        Pageable page = new OffsetPageRequest(from, size, sortById);
 
         List<User> users;
 
@@ -49,8 +49,6 @@ public class UserServiceImpl implements UserService {
         }
 
         return users.stream()
-                .skip(from)
-                .limit(size)
                 .map(UserMapper::toUserDto)
                 .toList();
     }
