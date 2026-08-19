@@ -18,7 +18,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"annaId\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -62,7 +63,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"petrId\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -106,7 +108,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"mariaId\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -306,7 +309,7 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/admin/users?ids=1&ids=3",
+          "raw": "{{baseUrl}}/admin/users?ids={{annaId}}&ids={{mariaId}}",
           "host": [
             "{{baseUrl}}"
           ],
@@ -317,11 +320,11 @@
           "query": [
             {
               "key": "ids",
-              "value": "1"
+              "value": "{{annaId}}"
             },
             {
               "key": "ids",
-              "value": "3"
+              "value": "{{mariaId}}"
             }
           ]
         }
@@ -349,14 +352,14 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/admin/users/3",
+          "raw": "{{baseUrl}}/admin/users/{{mariaId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "admin",
             "users",
-            "3"
+            "{{mariaId}}"
           ]
         }
       },
@@ -408,7 +411,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"musicCategoryId\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -452,7 +456,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"sportCategoryId\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -496,7 +501,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"cinemaCategoryId\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -674,13 +680,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/categories/2",
+          "raw": "{{baseUrl}}/categories/{{sportCategoryId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "categories",
-            "2"
+            "{{sportCategoryId}}"
           ]
         }
       },
@@ -710,7 +716,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"id\": 2,\r\n  \"name\": \"Активный спорт\"\r\n}",
+          "raw": "{\r\n  \"id\": {{sportCategoryId}},\r\n  \"name\": \"Активный спорт\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -718,14 +724,14 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/admin/categories/2",
+          "raw": "{{baseUrl}}/admin/categories/{{sportCategoryId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "admin",
             "categories",
-            "2"
+            "{{sportCategoryId}}"
           ]
         }
       },
@@ -754,13 +760,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/categories/2",
+          "raw": "{{baseUrl}}/categories/{{sportCategoryId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "categories",
-            "2"
+            "{{sportCategoryId}}"
           ]
         }
       },
@@ -787,14 +793,14 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/admin/categories/3",
+          "raw": "{{baseUrl}}/admin/categories/{{cinemaCategoryId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "admin",
             "categories",
-            "3"
+            "{{cinemaCategoryId}}"
           ]
         }
       },
@@ -845,7 +851,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"concertId\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -858,7 +865,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"annotation\": \"Большой музыкальный концерт под открытым небом\",\r\n  \"category\": 1,\r\n  \"description\": \"Музыкальный концерт с живым исполнением и программой для гостей.\",\r\n  \"eventDate\": \"2026-08-25 18:00:00\",\r\n  \"location\": {\r\n    \"lat\": 55.75,\r\n    \"lon\": 37.61\r\n  },\r\n  \"paid\": false,\r\n  \"participantLimit\": 10,\r\n  \"requestModeration\": true,\r\n  \"title\": \"Летний концерт\"\r\n}",
+          "raw": "{\r\n  \"annotation\": \"Большой музыкальный концерт под открытым небом\",\r\n  \"category\": {{musicCategoryId}},\r\n  \"description\": \"Музыкальный концерт с живым исполнением и программой для гостей.\",\r\n  \"eventDate\": \"2026-08-25 18:00:00\",\r\n  \"location\": {\r\n    \"lat\": 55.75,\r\n    \"lon\": 37.61\r\n  },\r\n  \"paid\": false,\r\n  \"participantLimit\": 10,\r\n  \"requestModeration\": true,\r\n  \"title\": \"Летний концерт\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -866,13 +873,13 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/users/1/events",
+          "raw": "{{baseUrl}}/users/{{annaId}}/events",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "1",
+            "{{annaId}}",
             "events"
           ]
         }
@@ -890,7 +897,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"trainingId\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -903,7 +911,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"annotation\": \"Совместная спортивная тренировка на свежем воздухе\",\r\n  \"category\": 2,\r\n  \"description\": \"Открытая тренировка в городском парке с упражнениями и небольшой разминкой для участников.\",\r\n  \"eventDate\": \"2026-08-26 18:00:00\",\r\n  \"location\": {\r\n    \"lat\": 55.76,\r\n    \"lon\": 37.62\r\n  },\r\n  \"paid\": false,\r\n  \"participantLimit\": 1,\r\n  \"requestModeration\": true,\r\n  \"title\": \"Тренировка в парке\"\r\n}",
+          "raw": "{\r\n  \"annotation\": \"Совместная спортивная тренировка на свежем воздухе\",\r\n  \"category\": {{sportCategoryId}},\r\n  \"description\": \"Открытая тренировка в городском парке с упражнениями и небольшой разминкой для участников.\",\r\n  \"eventDate\": \"2026-08-26 18:00:00\",\r\n  \"location\": {\r\n    \"lat\": 55.76,\r\n    \"lon\": 37.62\r\n  },\r\n  \"paid\": false,\r\n  \"participantLimit\": 1,\r\n  \"requestModeration\": true,\r\n  \"title\": \"Тренировка в парке\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -911,13 +919,13 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/users/1/events",
+          "raw": "{{baseUrl}}/users/{{annaId}}/events",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "1",
+            "{{annaId}}",
             "events"
           ]
         }
@@ -935,7 +943,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"festivalId\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -948,7 +957,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n  \"annotation\": \"Большой спортивный фестиваль с различными активностями\",\r\n  \"category\": 2,\r\n  \"description\": \"Спортивный фестиваль с несколькими площадками, соревнованиями и программой для участников.\",\r\n  \"eventDate\": \"2026-08-27 17:00:00\",\r\n  \"location\": {\r\n    \"lat\": 55.77,\r\n    \"lon\": 37.63\r\n  },\r\n  \"paid\": true,\r\n  \"participantLimit\": 20,\r\n  \"requestModeration\": false,\r\n  \"title\": \"Спортивный фестиваль\"\r\n}",
+          "raw": "{\r\n  \"annotation\": \"Большой спортивный фестиваль с различными активностями\",\r\n  \"category\": {{sportCategoryId}},\r\n  \"description\": \"Спортивный фестиваль с несколькими площадками, соревнованиями и программой для участников.\",\r\n  \"eventDate\": \"2026-08-27 17:00:00\",\r\n  \"location\": {\r\n    \"lat\": 55.77,\r\n    \"lon\": 37.63\r\n  },\r\n  \"paid\": true,\r\n  \"participantLimit\": 20,\r\n  \"requestModeration\": false,\r\n  \"title\": \"Спортивный фестиваль\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -956,13 +965,13 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/users/2/events",
+          "raw": "{{baseUrl}}/users/{{petrId}}/events",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "2",
+            "{{petrId}}",
             "events"
           ]
         }
@@ -992,13 +1001,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/users/1/events",
+          "raw": "{{baseUrl}}/users/{{annaId}}/events",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "1",
+            "{{annaId}}",
             "events"
           ]
         }
@@ -1028,13 +1037,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/users/1/events?from=0&size=1",
+          "raw": "{{baseUrl}}/users/{{annaId}}/events?from=0&size=1",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "1",
+            "{{annaId}}",
             "events"
           ],
           "query": [
@@ -1074,13 +1083,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/users/1/events?from=1&size=1",
+          "raw": "{{baseUrl}}/users/{{annaId}}/events?from=1&size=1",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "1",
+            "{{annaId}}",
             "events"
           ],
           "query": [
@@ -1120,15 +1129,15 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/users/1/events/1",
+          "raw": "{{baseUrl}}/users/{{annaId}}/events/{{concertId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "1",
+            "{{annaId}}",
             "events",
-            "1"
+            "{{concertId}}"
           ]
         }
       },
@@ -1166,15 +1175,15 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/users/1/events/1",
+          "raw": "{{baseUrl}}/users/{{annaId}}/events/{{concertId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "1",
+            "{{annaId}}",
             "events",
-            "1"
+            "{{concertId}}"
           ]
         }
       },
@@ -1253,14 +1262,14 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/admin/events/1",
+          "raw": "{{baseUrl}}/admin/events/{{concertId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "admin",
             "events",
-            "1"
+            "{{concertId}}"
           ]
         }
       },
@@ -1289,13 +1298,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/events/1",
+          "raw": "{{baseUrl}}/events/{{concertId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "events",
-            "1"
+            "{{concertId}}"
           ]
         }
       },
@@ -1367,14 +1376,14 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/admin/events/3",
+          "raw": "{{baseUrl}}/admin/events/{{festivalId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "admin",
             "events",
-            "3"
+            "{{festivalId}}"
           ]
         }
       },
@@ -1403,7 +1412,7 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/events?categories=2",
+          "raw": "{{baseUrl}}/events?categories={{sportCategoryId}}",
           "host": [
             "{{baseUrl}}"
           ],
@@ -1413,7 +1422,7 @@
           "query": [
             {
               "key": "categories",
-              "value": "2"
+              "value": "{{sportCategoryId}}"
             }
           ]
         }
@@ -1664,14 +1673,14 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/admin/events/2",
+          "raw": "{{baseUrl}}/admin/events/{{trainingId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "admin",
             "events",
-            "2"
+            "{{trainingId}}"
           ]
         }
       },
@@ -1688,7 +1697,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"participationRequestId\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -1700,19 +1710,19 @@
         "method": "POST",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/users/2/requests?eventId=2",
+          "raw": "{{baseUrl}}/users/{{petrId}}/requests?eventId={{trainingId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "2",
+            "{{petrId}}",
             "requests"
           ],
           "query": [
             {
               "key": "eventId",
-              "value": "2"
+              "value": "{{trainingId}}"
             }
           ]
         }
@@ -1742,15 +1752,15 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/users/1/events/2/requests",
+          "raw": "{{baseUrl}}/users/{{annaId}}/events/{{trainingId}}/requests",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "1",
+            "{{annaId}}",
             "events",
-            "2",
+            "{{trainingId}}",
             "requests"
           ]
         }
@@ -1781,7 +1791,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"requestIds\": [1],\r\n    \"status\": \"CONFIRMED\"\r\n}",
+          "raw": "{\r\n    \"requestIds\": [{{participationRequestId}}],\r\n    \"status\": \"CONFIRMED\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -1789,15 +1799,15 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/users/1/events/2/requests",
+          "raw": "{{baseUrl}}/users/{{annaId}}/events/{{trainingId}}/requests",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "1",
+            "{{annaId}}",
             "events",
-            "2",
+            "{{trainingId}}",
             "requests"
           ]
         }
@@ -1827,15 +1837,15 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/users/1/events/2",
+          "raw": "{{baseUrl}}/users/{{annaId}}/events/{{trainingId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "1",
+            "{{annaId}}",
             "events",
-            "2"
+            "{{trainingId}}"
           ]
         }
       },
@@ -1852,7 +1862,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"alexeyId\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -1908,19 +1919,19 @@
         "method": "POST",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/users/4/requests?eventId=2",
+          "raw": "{{baseUrl}}/users/{{alexeyId}}/requests?eventId={{trainingId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "4",
+            "{{alexeyId}}",
             "requests"
           ],
           "query": [
             {
               "key": "eventId",
-              "value": "2"
+              "value": "{{trainingId}}"
             }
           ]
         }
@@ -1950,13 +1961,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/users/2/requests",
+          "raw": "{{baseUrl}}/users/{{petrId}}/requests",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "2",
+            "{{petrId}}",
             "requests"
           ]
         }
@@ -1986,15 +1997,15 @@
         "method": "PATCH",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/users/2/requests/1/cancel",
+          "raw": "{{baseUrl}}/users/{{petrId}}/requests/{{participationRequestId}}/cancel",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "2",
+            "{{petrId}}",
             "requests",
-            "1",
+            "{{participationRequestId}}",
             "cancel"
           ]
         }
@@ -2024,15 +2035,15 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/users/1/events/2",
+          "raw": "{{baseUrl}}/users/{{annaId}}/events/{{trainingId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "1",
+            "{{annaId}}",
             "events",
-            "2"
+            "{{trainingId}}"
           ]
         }
       },
@@ -2049,7 +2060,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"autoRequestId\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -2061,19 +2073,19 @@
         "method": "POST",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/users/4/requests?eventId=3",
+          "raw": "{{baseUrl}}/users/{{alexeyId}}/requests?eventId={{festivalId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "4",
+            "{{alexeyId}}",
             "requests"
           ],
           "query": [
             {
               "key": "eventId",
-              "value": "3"
+              "value": "{{festivalId}}"
             }
           ]
         }
@@ -2091,7 +2103,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"compilationId\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -2104,7 +2117,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"events\": [1, 3],\r\n    \"pinned\": true,\r\n    \"title\": \"Летние события\"\r\n}",
+          "raw": "{\r\n    \"events\": [{{concertId}}, {{festivalId}}],\r\n    \"pinned\": true,\r\n    \"title\": \"Летние события\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -2147,13 +2160,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/compilations/1",
+          "raw": "{{baseUrl}}/compilations/{{compilationId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "compilations",
-            "1"
+            "{{compilationId}}"
           ]
         }
       },
@@ -2183,7 +2196,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"events\": [3],\r\n    \"pinned\": false,\r\n    \"title\": \"Спортивные события\"\r\n}",
+          "raw": "{\r\n    \"events\": [{{festivalId}}],\r\n    \"pinned\": false,\r\n    \"title\": \"Спортивные события\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -2191,14 +2204,14 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/admin/compilations/1",
+          "raw": "{{baseUrl}}/admin/compilations/{{compilationId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "admin",
             "compilations",
-            "1"
+            "{{compilationId}}"
           ]
         }
       },
@@ -2215,7 +2228,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"secondCompilationId\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -2228,7 +2242,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"events\": [1],\r\n    \"pinned\": true,\r\n    \"title\": \"Рекомендуемые события\"\r\n}",
+          "raw": "{\r\n    \"events\": [{{concertId}}],\r\n    \"pinned\": true,\r\n    \"title\": \"Рекомендуемые события\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -2309,14 +2323,14 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/admin/compilations/2",
+          "raw": "{{baseUrl}}/admin/compilations/{{secondCompilationId}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "admin",
             "compilations",
-            "2"
+            "{{secondCompilationId}}"
           ]
         }
       },
@@ -2333,7 +2347,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"comment1Id\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -2354,15 +2369,15 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/users/4/events/1/comments",
+          "raw": "{{baseUrl}}/users/{{alexeyId}}/events/{{concertId}}/comments",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "4",
+            "{{alexeyId}}",
             "events",
-            "1",
+            "{{concertId}}",
             "comments"
           ]
         }
@@ -2380,7 +2395,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"comment2Id\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -2401,15 +2417,15 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/users/2/events/1/comments",
+          "raw": "{{baseUrl}}/users/{{petrId}}/events/{{concertId}}/comments",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "2",
+            "{{petrId}}",
             "events",
-            "1",
+            "{{concertId}}",
             "comments"
           ]
         }
@@ -2427,7 +2443,8 @@
               "    pm.response.to.have.status(201);\r",
               "    pm.response.to.be.withBody;\r",
               "    pm.response.to.be.json;\r",
-              "});"
+              "});",
+              "pm.collectionVariables.set(\"comment3Id\", pm.response.json().id);"
             ],
             "type": "text/javascript",
             "packages": {},
@@ -2448,15 +2465,15 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/users/4/events/1/comments",
+          "raw": "{{baseUrl}}/users/{{alexeyId}}/events/{{concertId}}/comments",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "4",
+            "{{alexeyId}}",
             "events",
-            "1",
+            "{{concertId}}",
             "comments"
           ]
         }
@@ -2486,13 +2503,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/events/1/comments",
+          "raw": "{{baseUrl}}/events/{{concertId}}/comments",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "events",
-            "1",
+            "{{concertId}}",
             "comments"
           ]
         }
@@ -2563,14 +2580,14 @@
         "method": "PATCH",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/admin/comments/1?state=CONFIRMED",
+          "raw": "{{baseUrl}}/admin/comments/{{comment1Id}}?state=CONFIRMED",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "admin",
             "comments",
-            "1"
+            "{{comment1Id}}"
           ],
           "query": [
             {
@@ -2605,13 +2622,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/events/1/comments",
+          "raw": "{{baseUrl}}/events/{{concertId}}/comments",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "events",
-            "1",
+            "{{concertId}}",
             "comments"
           ]
         }
@@ -2641,14 +2658,14 @@
         "method": "PATCH",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/admin/comments/2?state=REJECTED",
+          "raw": "{{baseUrl}}/admin/comments/{{comment2Id}}?state=REJECTED",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "admin",
             "comments",
-            "2"
+            "{{comment2Id}}"
           ],
           "query": [
             {
@@ -2692,15 +2709,15 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/users/2/comments/1/reaction",
+          "raw": "{{baseUrl}}/users/{{petrId}}/comments/{{comment1Id}}/reaction",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "2",
+            "{{petrId}}",
             "comments",
-            "1",
+            "{{comment1Id}}",
             "reaction"
           ]
         }
@@ -2739,15 +2756,15 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/users/2/comments/1/reaction",
+          "raw": "{{baseUrl}}/users/{{petrId}}/comments/{{comment1Id}}/reaction",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "2",
+            "{{petrId}}",
             "comments",
-            "1",
+            "{{comment1Id}}",
             "reaction"
           ]
         }
@@ -2786,15 +2803,15 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/users/2/comments/1/reaction",
+          "raw": "{{baseUrl}}/users/{{petrId}}/comments/{{comment1Id}}/reaction",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "2",
+            "{{petrId}}",
             "comments",
-            "1",
+            "{{comment1Id}}",
             "reaction"
           ]
         }
@@ -2833,15 +2850,15 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/users/2/comments/1/reaction",
+          "raw": "{{baseUrl}}/users/{{petrId}}/comments/{{comment1Id}}/reaction",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "2",
+            "{{petrId}}",
             "comments",
-            "1",
+            "{{comment1Id}}",
             "reaction"
           ]
         }
@@ -2880,15 +2897,15 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/users/4/comments/1",
+          "raw": "{{baseUrl}}/users/{{alexeyId}}/comments/{{comment1Id}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "4",
+            "{{alexeyId}}",
             "comments",
-            "1"
+            "{{comment1Id}}"
           ]
         }
       },
@@ -2926,15 +2943,15 @@
           }
         },
         "url": {
-          "raw": "{{baseUrl}}/users/2/comments/1/reaction",
+          "raw": "{{baseUrl}}/users/{{petrId}}/comments/{{comment1Id}}/reaction",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "2",
+            "{{petrId}}",
             "comments",
-            "1",
+            "{{comment1Id}}",
             "reaction"
           ]
         }
@@ -2964,13 +2981,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/users/4/comments",
+          "raw": "{{baseUrl}}/users/{{alexeyId}}/comments",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "4",
+            "{{alexeyId}}",
             "comments"
           ]
         }
@@ -2998,15 +3015,15 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/users/4/comments/3",
+          "raw": "{{baseUrl}}/users/{{alexeyId}}/comments/{{comment3Id}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "users",
-            "4",
+            "{{alexeyId}}",
             "comments",
-            "3"
+            "{{comment3Id}}"
           ]
         }
       },
@@ -3033,14 +3050,14 @@
         "method": "DELETE",
         "header": [],
         "url": {
-          "raw": "{{baseUrl}}/admin/comments/2",
+          "raw": "{{baseUrl}}/admin/comments/{{comment2Id}}",
           "host": [
             "{{baseUrl}}"
           ],
           "path": [
             "admin",
             "comments",
-            "2"
+            "{{comment2Id}}"
           ]
         }
       },
@@ -3068,7 +3085,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"app\": \"ewm-main-service\",\r\n    \"uri\": \"/events/1\",\r\n    \"ip\": \"192.168.0.1\",\r\n    \"timestamp\": \"2026-08-19 20:30:00\"\r\n}",
+          "raw": "{\r\n    \"app\": \"ewm-main-service\",\r\n    \"uri\": \"/events/{{concertId}}\",\r\n    \"ip\": \"192.168.0.1\",\r\n    \"timestamp\": \"2026-08-19 20:30:00\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -3109,7 +3126,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"app\": \"ewm-main-service\",\r\n    \"uri\": \"/events/1\",\r\n    \"ip\": \"192.168.0.1\",\r\n    \"timestamp\": \"2026-08-19 20:31:00\"\r\n}",
+          "raw": "{\r\n    \"app\": \"ewm-main-service\",\r\n    \"uri\": \"/events/{{concertId}}\",\r\n    \"ip\": \"192.168.0.1\",\r\n    \"timestamp\": \"2026-08-19 20:31:00\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -3150,7 +3167,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\r\n    \"app\": \"ewm-main-service\",\r\n    \"uri\": \"/events/1\",\r\n    \"ip\": \"192.168.0.2\",\r\n    \"timestamp\": \"2026-08-19 20:32:00\"\r\n}",
+          "raw": "{\r\n    \"app\": \"ewm-main-service\",\r\n    \"uri\": \"/events/{{concertId}}\",\r\n    \"ip\": \"192.168.0.2\",\r\n    \"timestamp\": \"2026-08-19 20:32:00\"\r\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -3192,7 +3209,7 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{statsUrl}}/stats?start=2026-08-19%2020:00:00&end=2026-08-19%2021:00:00&uris=/events/1",
+          "raw": "{{statsUrl}}/stats?start=2026-08-19%2020:00:00&end=2026-08-19%2021:00:00&uris=/events/{{concertId}}",
           "host": [
             "{{statsUrl}}"
           ],
@@ -3210,7 +3227,7 @@
             },
             {
               "key": "uris",
-              "value": "/events/1"
+              "value": "/events/{{concertId}}"
             }
           ]
         }
@@ -3240,7 +3257,7 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{statsUrl}}/stats?start=2026-08-19%2020:00:00&end=2026-08-19%2021:00:00&uris=/events/1&unique=true",
+          "raw": "{{statsUrl}}/stats?start=2026-08-19%2020:00:00&end=2026-08-19%2021:00:00&uris=/events/{{concertId}}&unique=true",
           "host": [
             "{{statsUrl}}"
           ],
@@ -3258,7 +3275,7 @@
             },
             {
               "key": "uris",
-              "value": "/events/1"
+              "value": "/events/{{concertId}}"
             },
             {
               "key": "unique",
@@ -3381,6 +3398,74 @@
     {
       "key": "statsUrl",
       "value": "http://localhost:9090"
+    },
+    {
+      "key": "annaId",
+      "value": ""
+    },
+    {
+      "key": "petrId",
+      "value": ""
+    },
+    {
+      "key": "mariaId",
+      "value": ""
+    },
+    {
+      "key": "musicCategoryId",
+      "value": ""
+    },
+    {
+      "key": "sportCategoryId",
+      "value": ""
+    },
+    {
+      "key": "cinemaCategoryId",
+      "value": ""
+    },
+    {
+      "key": "concertId",
+      "value": ""
+    },
+    {
+      "key": "trainingId",
+      "value": ""
+    },
+    {
+      "key": "festivalId",
+      "value": ""
+    },
+    {
+      "key": "alexeyId",
+      "value": ""
+    },
+    {
+      "key": "participationRequestId",
+      "value": ""
+    },
+    {
+      "key": "autoRequestId",
+      "value": ""
+    },
+    {
+      "key": "compilationId",
+      "value": ""
+    },
+    {
+      "key": "secondCompilationId",
+      "value": ""
+    },
+    {
+      "key": "comment1Id",
+      "value": ""
+    },
+    {
+      "key": "comment2Id",
+      "value": ""
+    },
+    {
+      "key": "comment3Id",
+      "value": ""
     }
   ]
 }
