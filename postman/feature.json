@@ -1,0 +1,3386 @@
+{
+  "info": {
+    "_postman_id": "20246c1b-5ccd-4b75-be2d-4cfa19a10b96",
+    "name": "Explore With Me",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "53387075",
+    "_collection_link": "https://go.postman.co/collection/53387075-20246c1b-5ccd-4b75-be2d-4cfa19a10b96?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Создание пользователя Анна",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"anna.smirnova@test.ru\",\r\n  \"name\": \"Анна\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание пользователя Петр",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"petr.sokolov@test.ru\",\r\n  \"name\": \"Петр\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание пользователя Мария",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"email\": \"maria.ivanova@test.ru\",\r\n  \"name\": \"Мария\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение пользователей",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение пользователей с пагинацией",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/users?from=0&size=2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users"
+          ],
+          "query": [
+            {
+              "key": "from",
+              "value": "0"
+            },
+            {
+              "key": "size",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение пользователей с пагинацией from=1",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/admin/users?from=1&size=2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users"
+          ],
+          "query": [
+            {
+              "key": "from",
+              "value": "1"
+            },
+            {
+              "key": "size",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение пользователей по id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/admin/users?ids=1&ids=3",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users"
+          ],
+          "query": [
+            {
+              "key": "ids",
+              "value": "1"
+            },
+            {
+              "key": "ids",
+              "value": "3"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Удаление пользователя",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 204\", function() {\r",
+              "    pm.response.to.have.status(204);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/admin/users/3",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Проверка пользователей после удаления",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/admin/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание категории — Музыка",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Музыка\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/categories",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание категории — Спорт",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Спорт\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/categories",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание категории — Кино",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"name\": \"Кино\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/categories",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение категорий",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/categories",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение категорий с пагинацией",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/categories?from=0&size=2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "categories"
+          ],
+          "query": [
+            {
+              "key": "from",
+              "value": "0"
+            },
+            {
+              "key": "size",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение категорий с пагинацией from=1",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/categories?from=1&size=2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "categories"
+          ],
+          "query": [
+            {
+              "key": "from",
+              "value": "1"
+            },
+            {
+              "key": "size",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение категории по id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/categories/2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "categories",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Обновление категории",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"id\": 2,\r\n  \"name\": \"Активный спорт\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/categories/2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "categories",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Проверка после обновления",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/categories/2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "categories",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Удаление категории",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 204\", function() {\r",
+              "    pm.response.to.have.status(204);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/admin/categories/3",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "categories",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Проверка после удаления",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/categories",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "categories"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание ивента — Концерт",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"annotation\": \"Большой музыкальный концерт под открытым небом\",\r\n  \"category\": 1,\r\n  \"description\": \"Музыкальный концерт с живым исполнением и программой для гостей.\",\r\n  \"eventDate\": \"2026-08-25 18:00:00\",\r\n  \"location\": {\r\n    \"lat\": 55.75,\r\n    \"lon\": 37.61\r\n  },\r\n  \"paid\": false,\r\n  \"participantLimit\": 10,\r\n  \"requestModeration\": true,\r\n  \"title\": \"Летний концерт\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/1/events",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "1",
+            "events"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание ивента — Тренировка в парке",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"annotation\": \"Совместная спортивная тренировка на свежем воздухе\",\r\n  \"category\": 2,\r\n  \"description\": \"Открытая тренировка в городском парке с упражнениями и небольшой разминкой для участников.\",\r\n  \"eventDate\": \"2026-08-26 18:00:00\",\r\n  \"location\": {\r\n    \"lat\": 55.76,\r\n    \"lon\": 37.62\r\n  },\r\n  \"paid\": false,\r\n  \"participantLimit\": 1,\r\n  \"requestModeration\": true,\r\n  \"title\": \"Тренировка в парке\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/1/events",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "1",
+            "events"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание ивента— Спортивный фестиваль",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"annotation\": \"Большой спортивный фестиваль с различными активностями\",\r\n  \"category\": 2,\r\n  \"description\": \"Спортивный фестиваль с несколькими площадками, соревнованиями и программой для участников.\",\r\n  \"eventDate\": \"2026-08-27 17:00:00\",\r\n  \"location\": {\r\n    \"lat\": 55.77,\r\n    \"lon\": 37.63\r\n  },\r\n  \"paid\": true,\r\n  \"participantLimit\": 20,\r\n  \"requestModeration\": false,\r\n  \"title\": \"Спортивный фестиваль\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/2/events",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "2",
+            "events"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение ивета пользователя Анна",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/1/events",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "1",
+            "events"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение ивента пользователя Анна с пагинацией",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/1/events?from=0&size=1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "1",
+            "events"
+          ],
+          "query": [
+            {
+              "key": "from",
+              "value": "0"
+            },
+            {
+              "key": "size",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение ивента пользователя Анна с пагинацией from=1",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/1/events?from=1&size=1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "1",
+            "events"
+          ],
+          "query": [
+            {
+              "key": "from",
+              "value": "1"
+            },
+            {
+              "key": "size",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение ивента по id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/1/events/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "1",
+            "events",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Обновление ивента пользователем",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"title\": \"Летний музыкальный концерт\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/1/events/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "1",
+            "events",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение ивентов администратором",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/admin/events?states=PENDING",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "events"
+          ],
+          "query": [
+            {
+              "key": "states",
+              "value": "PENDING"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Публикация ивента администратором",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"stateAction\": \"PUBLISH_EVENT\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/events/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "events",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение опубликованного ивента",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение опубликованных ивентов",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Публикация спортивного фестиваля",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"stateAction\": \"PUBLISH_EVENT\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/events/3",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "events",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Фильтр ивентов по категории",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events?categories=2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events"
+          ],
+          "query": [
+            {
+              "key": "categories",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Фильтр ивентов по цене",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events?paid=true",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events"
+          ],
+          "query": [
+            {
+              "key": "paid",
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Поиск ивентов по тексту",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events?text=музыкальный",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events"
+          ],
+          "query": [
+            {
+              "key": "text",
+              "value": "музыкальный"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Фильтр ивентов по диапазону дат",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events?rangeStart=2026-08-26T00:00:00&rangeEnd=2026-08-28T00:00:00",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events"
+          ],
+          "query": [
+            {
+              "key": "rangeStart",
+              "value": "2026-08-26T00:00:00"
+            },
+            {
+              "key": "rangeEnd",
+              "value": "2026-08-28T00:00:00"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение ивентов с пагинацией",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events?from=0&size=1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events"
+          ],
+          "query": [
+            {
+              "key": "from",
+              "value": "0"
+            },
+            {
+              "key": "size",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение ивентов с пагинацией from=1",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events?from=1&size=1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events"
+          ],
+          "query": [
+            {
+              "key": "from",
+              "value": "1"
+            },
+            {
+              "key": "size",
+              "value": "1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Публикация ивента для тестирования заявок",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"stateAction\": \"PUBLISH_EVENT\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/events/2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "events",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание заявки на участие",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/2/requests?eventId=2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "2",
+            "requests"
+          ],
+          "query": [
+            {
+              "key": "eventId",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение заявок на участие в ивенте",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/1/events/2/requests",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "1",
+            "events",
+            "2",
+            "requests"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Подтверждение заявки на участие",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"requestIds\": [1],\r\n    \"status\": \"CONFIRMED\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/1/events/2/requests",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "1",
+            "events",
+            "2",
+            "requests"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Проверка количества подтвержденных заявок",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/1/events/2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "1",
+            "events",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание пользователя для проверки лимита заявок",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Алексей\",\r\n    \"email\": \"alexey.petrov@test.ru\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание заявки при достигнутом лимите участников",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 409 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(409);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/4/requests?eventId=2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "4",
+            "requests"
+          ],
+          "query": [
+            {
+              "key": "eventId",
+              "value": "2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение заявок пользователя",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/2/requests",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "2",
+            "requests"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Отмена заявки на участие",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/2/requests/1/cancel",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "2",
+            "requests",
+            "1",
+            "cancel"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Проверка освобождения места после отмены заявки",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/1/events/2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "1",
+            "events",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание заявки без модерации",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/4/requests?eventId=3",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "4",
+            "requests"
+          ],
+          "query": [
+            {
+              "key": "eventId",
+              "value": "3"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание подборки",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"events\": [1, 3],\r\n    \"pinned\": true,\r\n    \"title\": \"Летние события\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/compilations",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "compilations"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение подборки по id",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/compilations/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "compilations",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Обновление подборки",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"events\": [3],\r\n    \"pinned\": false,\r\n    \"title\": \"Спортивные события\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/compilations/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "compilations",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание второй подборки",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"events\": [1],\r\n    \"pinned\": true,\r\n    \"title\": \"Рекомендуемые события\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/compilations",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "compilations"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Фильтр подборок по pinned",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/compilations?pinned=true",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "compilations"
+          ],
+          "query": [
+            {
+              "key": "pinned",
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Удаление подборки",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 204\", function() {\r",
+              "    pm.response.to.have.status(204);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/admin/compilations/2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "compilations",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание комментария",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"text\": \"Отличное событие, обязательно хочу посетить концерт!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/4/events/1/comments",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "4",
+            "events",
+            "1",
+            "comments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание второго комментария",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"text\": \"Интересная программа концерта.\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/2/events/1/comments",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "2",
+            "events",
+            "1",
+            "comments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание третьего комментария",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"text\": \"Хорошая идея провести концерт под открытым небом.\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/4/events/1/comments",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "4",
+            "events",
+            "1",
+            "comments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение публичных комментариев до модерации",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events/1/comments",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events",
+            "1",
+            "comments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение комментариев на модерации",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/admin/comments?state=PENDING",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "comments"
+          ],
+          "query": [
+            {
+              "key": "state",
+              "value": "PENDING"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Подтверждение комментария",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/admin/comments/1?state=CONFIRMED",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "comments",
+            "1"
+          ],
+          "query": [
+            {
+              "key": "state",
+              "value": "CONFIRMED"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение публичных комментариев после модерации",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/events/1/comments",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "events",
+            "1",
+            "comments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Отклонение комментария",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/admin/comments/2?state=REJECTED",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "comments",
+            "2"
+          ],
+          "query": [
+            {
+              "key": "state",
+              "value": "REJECTED"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Добавление лайка к комментарию",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"reaction\": \"LIKE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/2/comments/1/reaction",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "2",
+            "comments",
+            "1",
+            "reaction"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Удаление лайка повторной реакцией",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"reaction\": \"LIKE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/2/comments/1/reaction",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "2",
+            "comments",
+            "1",
+            "reaction"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Добавление дизлайка к комментарию",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"reaction\": \"DISLIKE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/2/comments/1/reaction",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "2",
+            "comments",
+            "1",
+            "reaction"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Смена дизлайка на лайк",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"reaction\": \"LIKE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/2/comments/1/reaction",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "2",
+            "comments",
+            "1",
+            "reaction"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Редактирование комментария автором",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"text\": \"Отличное событие, после обновления программы хочу посетить его ещё больше!\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/4/comments/1",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "4",
+            "comments",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Добавление реакции на комментарий в статусе PENDING",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 409 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(409);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"reaction\": \"LIKE\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/users/2/comments/1/reaction",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "2",
+            "comments",
+            "1",
+            "reaction"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение комментариев пользователя",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/4/comments",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "4",
+            "comments"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Удаление комментария автором",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 204\", function() {\r",
+              "    pm.response.to.have.status(204);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/users/4/comments/3",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "users",
+            "4",
+            "comments",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Удаление комментария администратором",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 204\", function() {\r",
+              "    pm.response.to.have.status(204);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/admin/comments/2",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "comments",
+            "2"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Сохранение информации о просмотре",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"app\": \"ewm-main-service\",\r\n    \"uri\": \"/events/1\",\r\n    \"ip\": \"192.168.0.1\",\r\n    \"timestamp\": \"2026-08-19 20:30:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{statsUrl}}/hit",
+          "host": [
+            "{{statsUrl}}"
+          ],
+          "path": [
+            "hit"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Сохранение повторного просмотра",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"app\": \"ewm-main-service\",\r\n    \"uri\": \"/events/1\",\r\n    \"ip\": \"192.168.0.1\",\r\n    \"timestamp\": \"2026-08-19 20:31:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{statsUrl}}/hit",
+          "host": [
+            "{{statsUrl}}"
+          ],
+          "path": [
+            "hit"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Сохранение просмотра с другого IP",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 201\", function() {\r",
+              "    pm.response.to.have.status(201);\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"app\": \"ewm-main-service\",\r\n    \"uri\": \"/events/1\",\r\n    \"ip\": \"192.168.0.2\",\r\n    \"timestamp\": \"2026-08-19 20:32:00\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{statsUrl}}/hit",
+          "host": [
+            "{{statsUrl}}"
+          ],
+          "path": [
+            "hit"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение статистики просмотров",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{statsUrl}}/stats?start=2026-08-19%2020:00:00&end=2026-08-19%2021:00:00&uris=/events/1",
+          "host": [
+            "{{statsUrl}}"
+          ],
+          "path": [
+            "stats"
+          ],
+          "query": [
+            {
+              "key": "start",
+              "value": "2026-08-19%2020:00:00"
+            },
+            {
+              "key": "end",
+              "value": "2026-08-19%2021:00:00"
+            },
+            {
+              "key": "uris",
+              "value": "/events/1"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение статистики уникальных просмотров",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 200 и данные в формате json\", function() {\r",
+              "    pm.response.to.be.ok;\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{statsUrl}}/stats?start=2026-08-19%2020:00:00&end=2026-08-19%2021:00:00&uris=/events/1&unique=true",
+          "host": [
+            "{{statsUrl}}"
+          ],
+          "path": [
+            "stats"
+          ],
+          "query": [
+            {
+              "key": "start",
+              "value": "2026-08-19%2020:00:00"
+            },
+            {
+              "key": "end",
+              "value": "2026-08-19%2021:00:00"
+            },
+            {
+              "key": "uris",
+              "value": "/events/1"
+            },
+            {
+              "key": "unique",
+              "value": "true"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Создание пользователя с некорректным email",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 400 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(400);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Тестовый пользователь\",\r\n    \"email\": \"неправильный-email\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{baseUrl}}/admin/users",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "admin",
+            "users"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Получение несуществующей категории",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Ответ должен содержать код статуса 404 и данные в формате json\", function() {\r",
+              "    pm.response.to.have.status(404);\r",
+              "    pm.response.to.be.withBody;\r",
+              "    pm.response.to.be.json;\r",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/categories/999999",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "path": [
+            "categories",
+            "999999"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080"
+    },
+    {
+      "key": "statsUrl",
+      "value": "http://localhost:9090"
+    }
+  ]
+}
